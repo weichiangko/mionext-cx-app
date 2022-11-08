@@ -52,6 +52,7 @@ const App = () => {
     <View style={styles.container}>
       <SafeAreaView>
         <ScrollView>
+          <StatusBar />
           <View>
             <Text
               style={{
@@ -98,7 +99,6 @@ const App = () => {
               />
             </View>
           </View>
-          <StatusBar />
         </ScrollView>
       </SafeAreaView>
     </View>
