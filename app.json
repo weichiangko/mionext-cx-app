@@ -32,7 +32,27 @@
       "favicon": "./assets/favicon.png"
     },
     "extra": {
-      "oneSignalAppId": "d6ad6cdf-1761-4546-8248-2fdd41e696df"
+      "oneSignalAppId": "d6ad6cdf-1761-4546-8248-2fdd41e696df",
+      "eas": {
+        "build": {
+          "experimental": {
+            "ios": {
+              "appExtensions": [
+                {
+                  "targetName": "OneSignalNotificationServiceExtension",
+                  "bundleIdentifier": "com.mitac.miSentryCXTest.OneSignalNotificationServiceExtension",
+                  "entitlements": {
+                    "com.apple.security.application-groups": [
+                      "group.com.mitac.miSentryCXTest.onesignal"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "projectId": "705466b0-6af2-4ffa-b245-124089806b78"
+      }
     },
     "plugins": [
       [
