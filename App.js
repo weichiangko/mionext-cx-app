@@ -53,32 +53,10 @@ const App = () => {
       <SafeAreaView>
         <ScrollView>
           <StatusBar />
-          <View>
-            <Text
-              style={{
-                fontSize: 20,
-                color: "#B3B3B3",
-                fontWeight: "700",
-                alignSelf: "stretch",
-              }}
-            >
-              MiSentry
-            </Text>
-            <Text
-              style={{
-                fontSize: 16,
-                color: "#B3B3B3",
-                fontWeight: "500",
-                alignSelf: "stretch",
-              }}
-            >
-              OneSignal & SurveyCake Test v0.2.1
-            </Text>
-          </View>
           <Spacing />
           <EmailSubmit />
           <Separator />
-          <AskByDays></AskByDays>
+          <AskByDays />
           <Separator />
           <View>
             <View>
@@ -98,6 +76,19 @@ const App = () => {
                 onPress={() => showDeleteAccountAlert()}
               />
             </View>
+          </View>
+          <Spacing />
+          <View>
+            <Text
+              style={{
+                fontSize: 16,
+                color: "#B3B3B3",
+                fontWeight: "500",
+                alignSelf: "center",
+              }}
+            >
+              OneSignal & SurveyCake Test v0.2.1
+            </Text>
           </View>
         </ScrollView>
       </SafeAreaView>
