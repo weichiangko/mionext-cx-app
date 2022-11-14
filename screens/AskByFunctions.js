@@ -5,7 +5,7 @@ import Button from "../components/Button";
 
 const AskByFunctions = () => {
   return (
-    <View>
+    <View style={styles.card}>
       <View>
         <Text style={styles.content}>Ask by functions 測試</Text>
       </View>
@@ -21,6 +21,14 @@ const AskByFunctions = () => {
 export default AskByFunctions;
 
 const styles = StyleSheet.create({
+  card: {
+    backgroundColor: "#fff",
+    padding: 24,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: "#ccc",
+    marginVertical: 8,
+  },
   content: {
     fontSize: 16,
     alignSelf: "stretch",

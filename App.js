@@ -54,13 +54,9 @@ const App = () => {
       <SafeAreaView>
         <ScrollView>
           <StatusBar />
-          <Spacing />
           <EmailSubmit />
-          <Separator />
           <AskByDays />
-          <Separator />
           <AskByFunctions />
-          <Separator />
           <View>
             <View>
               <Text style={styles.content}>Delete Account 測試</Text>
@@ -94,6 +90,7 @@ const App = () => {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: "#F5F5F5",
     flex: 1,
     justifyContent: "flex-start",
     paddingHorizontal: 16,

@@ -11,7 +11,7 @@ const onPressDaysButton = (value) => {
 
 const AskByDays = () => {
   return (
-    <View>
+    <View style={styles.card}>
       <View style={styles.row}>
         <Text style={styles.content}>Ask by Days 測試</Text>
       </View>
@@ -40,6 +40,14 @@ const AskByDays = () => {
 export default AskByDays;
 
 const styles = StyleSheet.create({
+  card: {
+    backgroundColor: "#fff",
+    padding: 24,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: "#ccc",
+    marginVertical: 8,
+  },
   row: {
     flexDirection: "row",
   },

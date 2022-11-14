@@ -21,7 +21,7 @@ const EmailSubmit = () => {
   } = useForm();
 
   return (
-    <View>
+    <View style={styles.card}>
       <Text style={styles.content}>Email 註冊測試</Text>
       <Controller
         control={control}
@@ -50,7 +50,7 @@ const EmailSubmit = () => {
           </>
         )}
       />
-      <View style={{ marginTop: 16 }}>
+      <View style={{ marginTop: 32 }}>
         <Button label={"送出 Email"} onPress={handleSubmit(onSubmitMail)} />
       </View>
     </View>
@@ -60,6 +60,15 @@ const EmailSubmit = () => {
 export default EmailSubmit;
 
 const styles = StyleSheet.create({
+  card: {
+    backgroundColor: "#fff",
+    padding: 24,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: "#ccc",
+    marginTop: 16,
+    marginVertical: 8,
+  },
   input: {
     borderColor: "#cccccc",
     height: 40,
