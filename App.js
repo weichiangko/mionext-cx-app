@@ -13,6 +13,7 @@ import Button from "./components/Button";
 import Constants from "expo-constants";
 import EmailSubmit from "./screens/EmailSubmit";
 import AskByDays from "./screens/AskByDays";
+import AskByFunctions from "./screens/AskByFunctions";
 
 // CSS Styling Elements Here
 const Separator = () => <View style={styles.separator} />;
@@ -58,12 +59,7 @@ const App = () => {
           <Separator />
           <AskByDays />
           <Separator />
-          <View>
-            <View>
-              <Text style={styles.content}>Ask by functions 測試</Text>
-            </View>
-            <Button label={"我操作完 Function 了"} />
-          </View>
+          <AskByFunctions />
           <Separator />
           <View>
             <View>

@@ -17,10 +17,17 @@ const AskByDays = () => {
       </View>
       <View style={styles.row}>
         <View style={{ flex: 1, marginRight: 16 }}>
-          <Button label={"我 90 天了"} onPress={() => onPressDaysButton(90)} />
+          <Button
+            fillStyle={{ backgroundColor: "#ececec" }}
+            textStyle={{ color: "#3a3a3a" }}
+            label={"我 90 天了"}
+            onPress={() => onPressDaysButton(90)}
+          />
         </View>
         <View style={{ flex: 1 }}>
           <Button
+            fillStyle={{ backgroundColor: "#ececec" }}
+            textStyle={{ color: "#3a3a3a" }}
             label={"我 180 天了"}
             onPress={() => onPressDaysButton(180)}
           />
