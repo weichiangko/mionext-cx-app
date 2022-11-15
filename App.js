@@ -25,8 +25,10 @@ const wait = (timeout) => {
 const App = () => {
   OneSignal.setAppId(Constants.manifest.extra.oneSignalAppId);
   OneSignal.setNotificationOpenedHandler((openedEvent) => {
-    console.log("OneSignal: notification opened:", openedEvent);
-    const { action, notification } = openedEvent;
+    console.log("Notification is Opened!", openedEvent);
+    const { notification } = openedEvent;
+    OneSignal.sendTag(notification.templateName, "open");
+    console.log(notification.templateName);
   });
 
   const [refreshing, setRefreshing] = React.useState(false);

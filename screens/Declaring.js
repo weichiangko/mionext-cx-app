@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 import Button from "../components/Button";
 
 const onPressDeclaring = () => {
-  console.log("onPress declaring");
+  console.log("appStatus, init");
   OneSignal.sendTag("appStatus", "init");
   OneSignal.addTrigger("appStatus", "init");
 };

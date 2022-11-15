@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 import Button from "../components/Button";
 
 const onPressDaysButton = (value) => {
-  console.log(`onPress ${value} days`);
+  console.log(`engage_day, ${value}`);
   OneSignal.sendTag("engage_day", JSON.stringify(value));
   OneSignal.addTrigger("engage_day", value);
 };
