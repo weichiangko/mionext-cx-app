@@ -3,22 +3,24 @@ import OneSignal from "react-native-onesignal";
 import { StyleSheet, Text, View } from "react-native";
 import Button from "../components/Button";
 
-const AskByFunctions = () => {
+const onPressDeclaring = () => {
+  console.log("onPress declaring");
+  OneSignal.sendTag("appStatus", "init");
+  OneSignal.addTrigger("appStatus", "init");
+};
+
+const Declaring = () => {
   return (
     <View style={styles.card}>
-      <View>
-        <Text style={styles.content}>Ask by functions 測試</Text>
+      <View style={styles.row}>
+        <Text style={styles.content}>宣告測試</Text>
       </View>
-      <Button
-        fillStyle="secondary"
-        textStyle="secondary"
-        label={"我操作完 Function 了"}
-      />
+      <Button label={"首次使用"} onPress={() => onPressDeclaring()} />
     </View>
   );
 };
 
-export default AskByFunctions;
+export default Declaring;
 
 const styles = StyleSheet.create({
   card: {

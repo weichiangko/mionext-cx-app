@@ -1,25 +1,27 @@
 import React from "react";
 import OneSignal from "react-native-onesignal";
 import {
+  RefreshControl,
   StyleSheet,
   View,
   SafeAreaView,
-  Text,
-  Alert,
   ScrollView,
+  Text,
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import Button from "./components/Button";
 import Constants from "expo-constants";
 import EmailSubmit from "./screens/EmailSubmit";
 import AskByDays from "./screens/AskByDays";
 import AskByFunctions from "./screens/AskByFunctions";
+import DeleteAccount from "./screens/DeleteAccount";
+import Declaring from "./screens/Declaring";
 
-// CSS Styling Elements Here
-const Separator = () => <View style={styles.separator} />;
 const Spacing = () => <View style={styles.spacing} />;
 
-// Main App
+const wait = (timeout) => {
+  return new Promise((resolve) => setTimeout(resolve, timeout));
+};
+
 const App = () => {
   OneSignal.setAppId(Constants.manifest.extra.oneSignalAppId);
   OneSignal.setNotificationOpenedHandler((openedEvent) => {
@@ -27,48 +29,27 @@ const App = () => {
     const { action, notification } = openedEvent;
   });
 
-  const onPressDeleteAccount = () => {
-    console.log("onPress Delete Account");
-    OneSignal.sendTag("user_account", "deleted");
-    OneSignal.addTrigger("user_account", "deleted");
-  };
+  const [refreshing, setRefreshing] = React.useState(false);
 
-  const showDeleteAccountAlert = () =>
-    Alert.alert(
-      "Delete Your Mio Account",
-      `Your profile, photo, driving data and events will be permently deleted. This cannot be undone. If your device has active subscription, it won’t be cancelled by deleting your account.`,
-      [
-        {
-          text: "Cancel",
-        },
-        {
-          text: "Delete Account",
-          onPress: () => onPressDeleteAccount(),
-          style: "cancel",
-        },
-      ]
-    );
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    wait(2000).then(() => setRefreshing(false));
+  }, []);
 
   return (
     <View style={styles.container}>
       <SafeAreaView>
-        <ScrollView>
+        <ScrollView
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          }
+        >
           <StatusBar />
+          <Declaring />
           <EmailSubmit />
           <AskByDays />
           <AskByFunctions />
-          <View>
-            <View>
-              <Text style={styles.content}>Delete Account 測試</Text>
-            </View>
-            <View>
-              <Button
-                fillStyle={{ backgroundColor: "#E11900" }}
-                label={"Delete Account"}
-                onPress={() => showDeleteAccountAlert()}
-              />
-            </View>
-          </View>
+          <DeleteAccount />
           <Spacing />
           <View>
             <Text
@@ -77,9 +58,10 @@ const App = () => {
                 color: "#B3B3B3",
                 fontWeight: "500",
                 alignSelf: "center",
+                marginBottom: 32,
               }}
             >
-              OneSignal & SurveyCake Test v0.2.1
+              OneSignal & SurveyCake Test v0.2.2
             </Text>
           </View>
         </ScrollView>

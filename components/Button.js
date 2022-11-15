@@ -1,10 +1,33 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
+const getButtonType = (fillStyle) => {
+  if (fillStyle === "secondary") {
+    return styles.secondary;
+  } else if (fillStyle === "disabled") {
+    return styles.disabled;
+  }
+};
+
 const Button = ({ fillStyle, textStyle, label, ...rest }) => {
   return (
-    <TouchableOpacity style={[styles.button, fillStyle]} {...rest}>
-      <Text style={[styles.buttonText, textStyle]}>{label}</Text>
+    <TouchableOpacity
+      style={[styles.primary, getButtonType(fillStyle)]}
+      {...rest}
+    >
+      <Text
+        style={[
+          styles.primaryText,
+          textStyle === "secondary"
+            ? {
+                color: "#3a3a3a",
+                fontWeight: "500",
+              }
+            : textStyle,
+        ]}
+      >
+        {label}
+      </Text>
     </TouchableOpacity>
   );
 };
@@ -12,17 +35,21 @@ const Button = ({ fillStyle, textStyle, label, ...rest }) => {
 export default Button;
 
 const styles = StyleSheet.create({
-  button: {
+  primary: {
     backgroundColor: "#F05A1E",
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: 48,
-    height: 48,
+    borderRadius: 12,
+    height: 40,
   },
-  buttonText: {
+  secondary: {
+    backgroundColor: "#F5F5F5",
+    borderWidth: 1,
+    borderColor: "#ccc",
+  },
+  primaryText: {
     color: "#ffffff",
     fontSize: 16,
-    fontWeight: "bold",
   },
 });

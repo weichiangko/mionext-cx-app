@@ -22,7 +22,7 @@ const EmailSubmit = () => {
 
   return (
     <View style={styles.card}>
-      <Text style={styles.content}>Email 註冊測試</Text>
+      <Text style={styles.content}>基本資料測試</Text>
       <Controller
         control={control}
         name="email"
@@ -51,7 +51,12 @@ const EmailSubmit = () => {
         )}
       />
       <View style={{ marginTop: 32 }}>
-        <Button label={"送出 Email"} onPress={handleSubmit(onSubmitMail)} />
+        <Button
+          fillStyle="secondary"
+          textStyle="secondary"
+          label={"送出 Email"}
+          onPress={handleSubmit(onSubmitMail)}
+        />
       </View>
     </View>
   );
