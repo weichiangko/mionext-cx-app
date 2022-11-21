@@ -3,6 +3,10 @@ import OneSignal from "react-native-onesignal";
 import { StyleSheet, Text, View, Alert } from "react-native";
 import Button from "../components/Button";
 
+const Seperator = ({ addStyles }) => (
+  <View style={[styles.separator, addStyles]} />
+);
+
 const onPressDeleteAccount = () => {
   console.log("onPress Delete Account");
   OneSignal.sendTag("user_account", "deleted");
@@ -30,8 +34,11 @@ const DeleteAccount = () => {
     <>
       <View style={styles.card}>
         <View>
-          <Text style={styles.content}>Delete Account 測試</Text>
+          <Text style={[styles.titleContent, { marginVertical: -8 }]}>
+            Delete Account 測試
+          </Text>
         </View>
+        <Seperator />
         <View>
           <Button
             fillStyle="secondary"
@@ -56,10 +63,14 @@ const styles = StyleSheet.create({
     borderColor: "#ccc",
     marginVertical: 8,
   },
-  content: {
-    color: "#1f1f1f",
+  titleContent: {
+    color: "#666666",
     fontSize: 16,
-    alignSelf: "stretch",
-    marginBottom: 16,
+  },
+  separator: {
+    marginVertical: 24,
+    marginHorizontal: -24,
+    borderBottomColor: "#ccc",
+    borderBottomWidth: 1,
   },
 });

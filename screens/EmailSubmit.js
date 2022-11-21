@@ -4,6 +4,8 @@ import { StyleSheet, Text, View, TextInput } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import Button from "../components/Button";
 
+const Seperator = () => <View style={styles.separator} />;
+
 const onSubmitMail = (data) => {
   console.log(data.email);
   OneSignal.sendTags({
@@ -22,7 +24,10 @@ const EmailSubmit = () => {
 
   return (
     <View style={styles.card}>
-      <Text style={styles.content}>基本資料測試</Text>
+      <Text style={[styles.titleContent, { marginTop: -8, marginBottom: -8 }]}>
+        基本資料測試
+      </Text>
+      <Seperator />
       <Controller
         control={control}
         name="email"
@@ -80,10 +85,19 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
   },
+  titleContent: {
+    color: "#666666",
+    fontSize: 16,
+  },
   content: {
-    color: "#1f1f1f",
     fontSize: 16,
     alignSelf: "stretch",
     marginBottom: 16,
+  },
+  separator: {
+    marginVertical: 24,
+    marginHorizontal: -24,
+    borderBottomColor: "#ccc",
+    borderBottomWidth: 1,
   },
 });

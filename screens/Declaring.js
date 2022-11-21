@@ -3,6 +3,10 @@ import OneSignal from "react-native-onesignal";
 import { StyleSheet, Text, View } from "react-native";
 import Button from "../components/Button";
 
+const Seperator = ({ addStyles }) => (
+  <View style={[styles.separator, addStyles]} />
+);
+
 const onPressDeclaring = () => {
   console.log("appStatus, init");
   OneSignal.sendTag("appStatus", "init");
@@ -13,8 +17,11 @@ const Declaring = () => {
   return (
     <View style={styles.card}>
       <View style={styles.row}>
-        <Text style={styles.content}>宣告測試</Text>
+        <Text style={[styles.titleContent, { marginVertical: -8 }]}>
+          宣告測試
+        </Text>
       </View>
+      <Seperator />
       <Button label={"首次使用"} onPress={() => onPressDeclaring()} />
     </View>
   );
@@ -31,9 +38,14 @@ const styles = StyleSheet.create({
     borderColor: "#ccc",
     marginVertical: 8,
   },
-  content: {
+  titleContent: {
+    color: "#666666",
     fontSize: 16,
-    alignSelf: "stretch",
-    marginBottom: 16,
+  },
+  separator: {
+    marginVertical: 24,
+    marginHorizontal: -24,
+    borderBottomColor: "#ccc",
+    borderBottomWidth: 1,
   },
 });

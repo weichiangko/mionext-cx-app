@@ -63,7 +63,7 @@ const App = () => {
                 marginBottom: 32,
               }}
             >
-              OneSignal & SurveyCake Test v0.2.2
+              OneSignal & SurveyCake Test v0.2.3
             </Text>
           </View>
         </ScrollView>
@@ -96,11 +96,6 @@ const styles = StyleSheet.create({
   },
   spacing: {
     marginVertical: 24,
-  },
-  separator: {
-    marginVertical: 24,
-    borderBottomColor: "#cccccc",
-    borderBottomWidth: 1,
   },
 });
 
