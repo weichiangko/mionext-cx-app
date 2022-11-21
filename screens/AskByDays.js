@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import OneSignal from "react-native-onesignal";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import Button from "../components/Button";
 
 const Seperator = ({ addStyles }) => (
@@ -24,6 +24,18 @@ const AskByDays = () => {
             Ask by Days 測試
           </Text>
         </View>
+        <View>
+          <TouchableOpacity>
+            <Text
+              style={[
+                styles.titleContent,
+                { marginVertical: -8, color: "#F05A1E" },
+              ]}
+            >
+              Reset
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
       <Seperator addStyles={{ marginHorizontal: -24 }} />
       <View
@@ -34,7 +46,7 @@ const AskByDays = () => {
       >
         <Text style={styles.content}>MioNext 已使用 </Text>
         <Text style={[styles.content, { color: "#F05A1E" }]}>{day} </Text>
-        <Text style={styles.content}>了！</Text>
+        <Text style={styles.content}>天了！</Text>
       </View>
       <View style={styles.row}>
         <View style={{ flex: 1, marginRight: 16 }}>

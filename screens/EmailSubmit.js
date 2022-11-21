@@ -76,10 +76,10 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     borderWidth: 1,
     borderColor: "#ccc",
-    marginTop: 16,
     marginVertical: 8,
   },
   input: {
+    borderRadius: 8,
     borderColor: "#cccccc",
     height: 40,
     borderWidth: 1,
