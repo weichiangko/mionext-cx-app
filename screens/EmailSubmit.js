@@ -24,7 +24,7 @@ const EmailSubmit = () => {
 
   return (
     <View style={styles.card}>
-      <Text style={[styles.titleContent, { marginTop: -8, marginBottom: -8 }]}>
+      <Text style={[styles.titleContent, { marginVertical: -8 }]}>
         基本資料測試
       </Text>
       <Seperator />

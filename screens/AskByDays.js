@@ -25,7 +25,12 @@ const AskByDays = () => {
           </Text>
         </View>
         <View>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              setDay(0);
+              onPressDaysButton(0);
+            }}
+          >
             <Text
               style={[
                 styles.titleContent,
