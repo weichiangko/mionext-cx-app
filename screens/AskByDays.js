@@ -3,18 +3,17 @@ import OneSignal from "react-native-onesignal";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import Button from "../components/Button";
 
-const Seperator = ({ addStyles }) => (
-  <View style={[styles.separator, addStyles]} />
-);
+const AskByDays = ({ onChangeAppDay }) => {
+  const Seperator = ({ addStyles }) => (
+    <View style={[styles.separator, addStyles]} />
+  );
 
-const onPressDaysButton = (value) => {
-  console.log(`engage_day, ${value}`);
-  OneSignal.sendTag("engage_day", JSON.stringify(value));
-  OneSignal.addTrigger("engage_day", value);
-};
-
-const AskByDays = () => {
-  const [day, setDay] = useState(0);
+  const onPressDaysButton = (value) => {
+    console.log(`engage_day, ${value}`);
+    OneSignal.sendTag("engage_day", JSON.stringify(value));
+    OneSignal.addTrigger("engage_day", value);
+    onChangeAppDay(value);
+  };
 
   return (
     <View style={styles.card}>
@@ -27,7 +26,6 @@ const AskByDays = () => {
         <View>
           <TouchableOpacity
             onPress={() => {
-              setDay(0);
               onPressDaysButton(0);
             }}
           >
@@ -43,16 +41,6 @@ const AskByDays = () => {
         </View>
       </View>
       <Seperator addStyles={{ marginHorizontal: -24 }} />
-      <View
-        style={[
-          styles.row,
-          { marginBottom: 16, alignItems: "center", justifyContent: "center" },
-        ]}
-      >
-        <Text style={styles.content}>MioNext 已使用 </Text>
-        <Text style={[styles.content, { color: "#F05A1E" }]}>{day} </Text>
-        <Text style={styles.content}>天了！</Text>
-      </View>
       <View style={styles.row}>
         <View style={{ flex: 1, marginRight: 16 }}>
           <Button
@@ -60,7 +48,6 @@ const AskByDays = () => {
             textStyle="secondary"
             label={"90"}
             onPress={() => {
-              setDay(90);
               onPressDaysButton(90);
             }}
           />
@@ -71,7 +58,6 @@ const AskByDays = () => {
             textStyle="secondary"
             label={"180"}
             onPress={() => {
-              setDay(180);
               onPressDaysButton(180);
             }}
           />
@@ -82,7 +68,6 @@ const AskByDays = () => {
             textStyle="secondary"
             label={"330"}
             onPress={() => {
-              setDay(330);
               onPressDaysButton(330);
             }}
           />

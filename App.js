@@ -33,6 +33,7 @@ const App = () => {
 
   const [refreshing, setRefreshing] = useState(false);
   const [removed, setRemoved] = useState([false, false, false, false]);
+  const [appDayValue, setAppDayValue] = useState(0);
 
   const onRefresh = useCallback(() => {
     console.log("Refreshing...");
@@ -46,6 +47,10 @@ const App = () => {
 
   const onButtonPress = (index) => {
     setRemoved(removed.map((item, i) => (i === index ? true : item)));
+  };
+
+  const handleAppDayValue = (value) => {
+    setAppDayValue(value);
   };
 
   return (
@@ -66,6 +71,22 @@ const App = () => {
               Version: v0.2.4 {/* Update the version here */}
             </Text>
           </View>
+          <View
+            style={[
+              styles.row,
+              {
+                marginBottom: 16,
+                alignItems: "center",
+                justifyContent: "center",
+              },
+            ]}
+          >
+            <Text style={styles.content}>MioNext 已使用 </Text>
+            <Text style={[styles.content, { color: "#F05A1E" }]}>
+              {appDayValue}
+            </Text>
+            <Text style={styles.content}> 天了！</Text>
+          </View>
           {!removed[0] && <Declaring onButtonPress={() => onButtonPress(0)} />}
           {!removed[1] && (
             <EmailSubmit
@@ -73,7 +94,7 @@ const App = () => {
               onButtonPress={() => onButtonPress(1)}
             />
           )}
-          <AskByDays />
+          <AskByDays onChangeAppDay={handleAppDayValue} />
           <AskByFunctions />
           <DeleteAccount />
           <Spacing />
