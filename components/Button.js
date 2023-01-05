@@ -2,22 +2,24 @@ import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
 const getTextType = (textStyle) => {
-  if (textStyle === "secondary") {
-    return styles.secondaryText;
-  } else if (textStyle === "error") {
-    return styles.errorText;
-  } else {
-    return styles.primaryText;
+  switch (textStyle) {
+    case "secondary":
+      return styles.secondaryText;
+    case "error":
+      return styles.errorText;
+    default:
+      return styles.primaryText;
   }
 };
 
 const getButtonType = (fillStyle) => {
-  if (fillStyle === "secondary") {
-    return styles.secondary;
-  } else if (fillStyle === "error") {
-    return styles.error;
-  } else {
-    return styles.primary;
+  switch (fillStyle) {
+    case "secondary":
+      return styles.secondary;
+    case "error":
+      return styles.error;
+    default:
+      return styles.primary;
   }
 };
 
