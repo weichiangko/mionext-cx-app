@@ -14,6 +14,12 @@ const Seperator = ({ addStyles }) => (
   <View style={[styles.separator, addStyles]} />
 );
 
+const onPressCloseButton = () => {
+  console.log("function, liveViewInit");
+  // OneSignal.sendTag("function", "liveViewInit");
+  // OneSignal.addTrigger("function", "liveViewInit");
+};
+
 const AskByFunctions = () => {
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -43,10 +49,11 @@ const AskByFunctions = () => {
           </View>
           <View style={styles.modalContainer}>
             <Button
-              fillStyle="secondary"
-              textStyle="secondary"
               label={"關閉功能"}
-              onPress={() => setModalVisible(false)}
+              onPress={() => {
+                setModalVisible(false);
+                onPressCloseButton();
+              }}
             />
           </View>
         </SafeAreaView>

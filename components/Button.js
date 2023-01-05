@@ -9,11 +9,16 @@ const getButtonType = (fillStyle) => {
   }
 };
 
-const Button = ({ fillStyle, textStyle, label, ...rest }) => {
+const Button = ({ fillStyle, textStyle, label, disabled, ...rest }) => {
   return (
     <TouchableOpacity
-      style={[styles.primary, getButtonType(fillStyle)]}
+      style={[
+        styles.primary,
+        getButtonType(fillStyle),
+        disabled ? styles.disabled : null,
+      ]}
       {...rest}
+      disabled={disabled}
     >
       <Text
         style={[
@@ -35,6 +40,9 @@ const Button = ({ fillStyle, textStyle, label, ...rest }) => {
 export default Button;
 
 const styles = StyleSheet.create({
+  disabled: {
+    backgroundColor: "#CCCCCC",
+  },
   primary: {
     backgroundColor: "#F05A1E",
     width: "100%",
