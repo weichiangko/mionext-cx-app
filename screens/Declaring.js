@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import OneSignal from "react-native-onesignal";
 import { StyleSheet, Text, View } from "react-native";
 import Button from "../components/Button";
@@ -13,8 +13,15 @@ const onPressDeclaring = () => {
   OneSignal.addTrigger("appStatus", "init");
 };
 
-const Declaring = () => {
+const Declaring = ({ onRefresh }) => {
   const [isFirstClickDisabled, setIsFirstClickDisabled] = useState(false);
+
+  useEffect(() => {
+    if (onRefresh) {
+      console.log("Refreshing in Devlaring");
+      setIsFirstClickDisabled(false);
+    }
+  }, [onRefresh]);
 
   return (
     <View style={styles.card}>

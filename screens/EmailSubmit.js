@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import OneSignal from "react-native-onesignal";
 import { StyleSheet, Text, View, TextInput } from "react-native";
 import { useForm, Controller } from "react-hook-form";
@@ -15,12 +15,20 @@ const onSubmitMail = (data) => {
   OneSignal.addTrigger("user_email", data.email);
 };
 
-const EmailSubmit = () => {
+const EmailSubmit = ({ onRefresh }) => {
   const {
     control,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm();
+
+  useEffect(() => {
+    if (onRefresh) {
+      console.log("Refreshing in Email");
+      setValue("email", "");
+    }
+  }, [onRefresh]);
 
   return (
     <View style={styles.card}>

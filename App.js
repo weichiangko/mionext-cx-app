@@ -48,8 +48,8 @@ const App = () => {
           }
         >
           <StatusBar />
-          <Declaring />
-          <EmailSubmit />
+          <Declaring onRefresh={refreshing} />
+          <EmailSubmit onRefresh={refreshing} />
           <AskByDays />
           <AskByFunctions />
           <DeleteAccount />
