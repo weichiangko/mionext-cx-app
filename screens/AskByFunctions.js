@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import OneSignal from "react-native-onesignal";
-import { StyleSheet, Text, View } from "react-native";
+import {
+  Header,
+  View,
+  Text,
+  Modal,
+  StyleSheet,
+  SafeAreaView,
+} from "react-native";
 import Button from "../components/Button";
 
 const Seperator = ({ addStyles }) => (
@@ -8,6 +15,8 @@ const Seperator = ({ addStyles }) => (
 );
 
 const AskByFunctions = () => {
+  const [modalVisible, setModalVisible] = useState(false);
+
   return (
     <View style={styles.card}>
       <View>
@@ -19,8 +28,29 @@ const AskByFunctions = () => {
       <Button
         fillStyle="secondary"
         textStyle="secondary"
-        label={"我操作完 Function 了"}
+        label={"功能測試"}
+        onPress={() => setModalVisible(true)}
       />
+      <Modal
+        animationType="slide"
+        presentationStyle="pageSheet"
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <SafeAreaView style={{ flex: 1 }}>
+          <View style={styles.topBar}>
+            <Text style={styles.topBarText}>功能測試</Text>
+          </View>
+          <View style={styles.modalContainer}>
+            <Button
+              fillStyle="secondary"
+              textStyle="secondary"
+              label={"關閉功能"}
+              onPress={() => setModalVisible(false)}
+            />
+          </View>
+        </SafeAreaView>
+      </Modal>
     </View>
   );
 };
@@ -28,6 +58,22 @@ const AskByFunctions = () => {
 export default AskByFunctions;
 
 const styles = StyleSheet.create({
+  topBar: {
+    backgroundColor: "#fff",
+    paddingVertical: 20,
+    alignItems: "center",
+    borderBottomWidth: 1,
+    borderColor: "#ccc",
+  },
+  topBarText: {
+    color: "#666666",
+    fontSize: 18,
+  },
+  modalContainer: {
+    flex: 1,
+    padding: 16,
+    justifyContent: "flex-end",
+  },
   card: {
     backgroundColor: "#fff",
     padding: 24,
