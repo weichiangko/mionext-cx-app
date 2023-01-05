@@ -16,12 +16,6 @@ import AskByFunctions from "./screens/AskByFunctions";
 import DeleteAccount from "./screens/DeleteAccount";
 import Declaring from "./screens/Declaring";
 
-const Spacing = () => <View style={styles.spacing} />;
-
-const wait = (timeout) => {
-  return new Promise((resolve) => setTimeout(resolve, timeout));
-};
-
 const App = () => {
   OneSignal.setAppId(Constants.manifest.extra.oneSignalAppId);
   OneSignal.setNotificationOpenedHandler((openedEvent) => {
@@ -34,6 +28,10 @@ const App = () => {
   const [refreshing, setRefreshing] = useState(false);
   const [removed, setRemoved] = useState([false, false, false, false]);
   const [appDayValue, setAppDayValue] = useState(0);
+
+  const wait = (timeout) => {
+    return new Promise((resolve) => setTimeout(resolve, timeout));
+  };
 
   const onRefresh = useCallback(() => {
     console.log("Refreshing...");
@@ -53,6 +51,8 @@ const App = () => {
     setAppDayValue(value);
   };
 
+  const Spacing = () => <View style={styles.spacing} />;
+
   return (
     <View style={styles.container}>
       <SafeAreaView>
@@ -62,9 +62,8 @@ const App = () => {
           }
         >
           <StatusBar />
-          <Spacing />
-          <View style={{ marginBottom: 32 }}>
-            <Text style={styles.appTitleText}>
+          <View style={{ marginVertical: 32 }}>
+            <Text style={[styles.appTitleText, { fontWeight: "700" }]}>
               OneSignal & SurveyCake Test App
             </Text>
             <Text style={[styles.appTitleText, { fontSize: 18 }]}>
@@ -108,7 +107,6 @@ const styles = StyleSheet.create({
   appTitleText: {
     fontSize: 20,
     color: "#B3B3B3",
-    fontWeight: "500",
     alignSelf: "flex-start",
     marginBottom: 8,
   },

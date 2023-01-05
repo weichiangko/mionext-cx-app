@@ -3,33 +3,33 @@ import OneSignal from "react-native-onesignal";
 import { StyleSheet, Text, View, Alert } from "react-native";
 import Button from "../components/Button";
 
-const Seperator = ({ addStyles }) => (
-  <View style={[styles.separator, addStyles]} />
-);
+const DeleteAccount = () => {
+  const onPressDeleteAccount = () => {
+    console.log("onPress Delete Account");
+    OneSignal.sendTag("user_account", "deleted");
+    OneSignal.addTrigger("user_account", "deleted");
+  };
 
-const onPressDeleteAccount = () => {
-  console.log("onPress Delete Account");
-  OneSignal.sendTag("user_account", "deleted");
-  OneSignal.addTrigger("user_account", "deleted");
-};
+  const showDeleteAccountAlert = () =>
+    Alert.alert(
+      "Delete Your Mio Account",
+      `Your profile, photo, driving data and events will be permently deleted. This cannot be undone. If your device has active subscription, it won’t be cancelled by deleting your account.`,
+      [
+        {
+          text: "Cancel",
+        },
+        {
+          text: "Delete Account",
+          onPress: () => onPressDeleteAccount(),
+          style: "cancel",
+        },
+      ]
+    );
 
-const showDeleteAccountAlert = () =>
-  Alert.alert(
-    "Delete Your Mio Account",
-    `Your profile, photo, driving data and events will be permently deleted. This cannot be undone. If your device has active subscription, it won’t be cancelled by deleting your account.`,
-    [
-      {
-        text: "Cancel",
-      },
-      {
-        text: "Delete Account",
-        onPress: () => onPressDeleteAccount(),
-        style: "cancel",
-      },
-    ]
+  const Seperator = ({ addStyles }) => (
+    <View style={[styles.separator, addStyles]} />
   );
 
-const DeleteAccount = () => {
   return (
     <>
       <View style={styles.card}>

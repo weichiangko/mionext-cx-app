@@ -3,25 +3,16 @@ import OneSignal from "react-native-onesignal";
 import { StyleSheet, Text, View } from "react-native";
 import Button from "../components/Button";
 
-const Seperator = ({ addStyles }) => (
-  <View style={[styles.separator, addStyles]} />
-);
-
-const onPressDeclaring = () => {
-  console.log("appStatus, init");
-  OneSignal.sendTag("appStatus", "init");
-  OneSignal.addTrigger("appStatus", "init");
-};
-
 const Declaring = ({ onButtonPress }) => {
-  // const [isFirstClickDisabled, setIsFirstClickDisabled] = useState(false);
+  const onPressDeclaring = () => {
+    console.log("appStatus, init");
+    OneSignal.sendTag("appStatus", "init");
+    OneSignal.addTrigger("appStatus", "init");
+  };
 
-  // useEffect(() => {
-  //   if (onRefresh) {
-  //     console.log("Refreshing in Devlaring");
-  //     setIsFirstClickDisabled(false);
-  //   }
-  // }, [onRefresh]);
+  const Seperator = ({ addStyles }) => (
+    <View style={[styles.separator, addStyles]} />
+  );
 
   return (
     <View style={styles.card}>
@@ -38,9 +29,7 @@ const Declaring = ({ onButtonPress }) => {
         onPress={() => {
           onPressDeclaring();
           onButtonPress();
-          // setIsFirstClickDisabled(true);
         }}
-        // disabled={isFirstClickDisabled}
       />
     </View>
   );

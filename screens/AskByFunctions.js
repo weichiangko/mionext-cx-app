@@ -1,28 +1,20 @@
 import React, { useState } from "react";
 import OneSignal from "react-native-onesignal";
-import {
-  Header,
-  View,
-  Text,
-  Modal,
-  StyleSheet,
-  SafeAreaView,
-} from "react-native";
+import { View, Text, Modal, StyleSheet, SafeAreaView } from "react-native";
 import Button from "../components/Button";
 
-const Seperator = ({ addStyles }) => (
-  <View style={[styles.separator, addStyles]} />
-);
-
-const onPressCloseButton = () => {
-  console.log("function, liveViewInit");
-  // OneSignal.sendTag("function", "liveViewInit");
-  // OneSignal.addTrigger("function", "liveViewInit");
-};
-
 const AskByFunctions = () => {
+  const onPressCloseButton = () => {
+    console.log("function, liveViewInit");
+    // OneSignal.sendTag("function", "liveViewInit");
+    // OneSignal.addTrigger("function", "liveViewInit");
+  };
+
   const [modalVisible, setModalVisible] = useState(false);
 
+  const Seperator = ({ addStyles }) => (
+    <View style={[styles.separator, addStyles]} />
+  );
   return (
     <View style={styles.card}>
       <View>

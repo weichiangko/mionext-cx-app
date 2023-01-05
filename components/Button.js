@@ -1,29 +1,29 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
-const getTextType = (textStyle) => {
-  switch (textStyle) {
-    case "secondary":
-      return styles.secondaryText;
-    case "error":
-      return styles.errorText;
-    default:
-      return styles.primaryText;
-  }
-};
-
-const getButtonType = (fillStyle) => {
-  switch (fillStyle) {
-    case "secondary":
-      return styles.secondary;
-    case "error":
-      return styles.error;
-    default:
-      return styles.primary;
-  }
-};
-
 const Button = ({ fillStyle, textStyle, label, disabled, ...rest }) => {
+  const getTextType = (textStyle) => {
+    switch (textStyle) {
+      case "secondary":
+        return styles.secondaryText;
+      case "error":
+        return styles.errorText;
+      default:
+        return styles.primaryText;
+    }
+  };
+
+  const getButtonType = (fillStyle) => {
+    switch (fillStyle) {
+      case "secondary":
+        return styles.secondary;
+      case "error":
+        return styles.error;
+      default:
+        return styles.primary;
+    }
+  };
+
   return (
     <TouchableOpacity
       style={[
