@@ -32,12 +32,21 @@ const App = () => {
   });
 
   const [refreshing, setRefreshing] = useState(false);
+  const [removed, setRemoved] = useState([false, false, false, false]);
 
   const onRefresh = useCallback(() => {
     console.log("Refreshing...");
     setRefreshing(true);
-    wait(1200).then(() => setRefreshing(false));
+    wait(1200).then(() => {
+      setRefreshing(false);
+      setRemoved(removed.map((item) => false));
+    });
+    console.log(removed);
   }, []);
+
+  const onButtonPress = (index) => {
+    setRemoved(removed.map((item, i) => (i === index ? true : item)));
+  };
 
   return (
     <View style={styles.container}>
@@ -57,8 +66,13 @@ const App = () => {
               Version: v0.2.4 {/* Update the version here */}
             </Text>
           </View>
-          <Declaring onRefresh={refreshing} />
-          <EmailSubmit onRefresh={refreshing} />
+          {!removed[0] && <Declaring onButtonPress={() => onButtonPress(0)} />}
+          {!removed[1] && (
+            <EmailSubmit
+              onRefresh={refreshing}
+              onButtonPress={() => onButtonPress(1)}
+            />
+          )}
           <AskByDays />
           <AskByFunctions />
           <DeleteAccount />

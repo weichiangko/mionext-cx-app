@@ -13,15 +13,15 @@ const onPressDeclaring = () => {
   OneSignal.addTrigger("appStatus", "init");
 };
 
-const Declaring = ({ onRefresh }) => {
-  const [isFirstClickDisabled, setIsFirstClickDisabled] = useState(false);
+const Declaring = ({ onButtonPress }) => {
+  // const [isFirstClickDisabled, setIsFirstClickDisabled] = useState(false);
 
-  useEffect(() => {
-    if (onRefresh) {
-      console.log("Refreshing in Devlaring");
-      setIsFirstClickDisabled(false);
-    }
-  }, [onRefresh]);
+  // useEffect(() => {
+  //   if (onRefresh) {
+  //     console.log("Refreshing in Devlaring");
+  //     setIsFirstClickDisabled(false);
+  //   }
+  // }, [onRefresh]);
 
   return (
     <View style={styles.card}>
@@ -32,12 +32,15 @@ const Declaring = ({ onRefresh }) => {
       </View>
       <Seperator />
       <Button
+        fillStyle="secondary"
+        textStyle="secondary"
         label={"首次使用"}
         onPress={() => {
           onPressDeclaring();
-          setIsFirstClickDisabled(true);
+          onButtonPress();
+          // setIsFirstClickDisabled(true);
         }}
-        disabled={isFirstClickDisabled}
+        // disabled={isFirstClickDisabled}
       />
     </View>
   );

@@ -4,18 +4,19 @@ import { StyleSheet, Text, View, TextInput } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import Button from "../components/Button";
 
-const Seperator = () => <View style={styles.separator} />;
+const EmailSubmit = ({ onRefresh, onButtonPress }) => {
+  const Seperator = () => <View style={styles.separator} />;
 
-const onSubmitMail = (data) => {
-  console.log(data.email);
-  OneSignal.sendTags({
-    user_email: data.email,
-    user_account: "active",
-  });
-  OneSignal.addTrigger("user_email", data.email);
-};
+  const onSubmitMail = (data) => {
+    console.log(data.email);
+    OneSignal.sendTags({
+      user_email: data.email,
+      user_account: "active",
+    });
+    OneSignal.addTrigger("user_email", data.email);
+    onButtonPress();
+  };
 
-const EmailSubmit = ({ onRefresh }) => {
   const {
     control,
     handleSubmit,
@@ -25,7 +26,7 @@ const EmailSubmit = ({ onRefresh }) => {
 
   useEffect(() => {
     if (onRefresh) {
-      console.log("Refreshing in Email");
+      console.log("Refreshing email value");
       setValue("email", "");
     }
   }, [onRefresh]);
