@@ -48,25 +48,21 @@ const App = () => {
           }
         >
           <StatusBar />
+          <Spacing />
+          <View style={{ marginBottom: 32 }}>
+            <Text style={styles.appTitleText}>
+              OneSignal & SurveyCake Test App
+            </Text>
+            <Text style={[styles.appTitleText, { fontSize: 18 }]}>
+              Version: v0.2.4 {/* Update the version here */}
+            </Text>
+          </View>
           <Declaring onRefresh={refreshing} />
           <EmailSubmit onRefresh={refreshing} />
           <AskByDays />
           <AskByFunctions />
           <DeleteAccount />
           <Spacing />
-          <View>
-            <Text
-              style={{
-                fontSize: 16,
-                color: "#B3B3B3",
-                fontWeight: "500",
-                alignSelf: "center",
-                marginBottom: 32,
-              }}
-            >
-              OneSignal & SurveyCake Test v0.2.3
-            </Text>
-          </View>
         </ScrollView>
       </SafeAreaView>
     </View>
@@ -74,6 +70,13 @@ const App = () => {
 };
 
 const styles = StyleSheet.create({
+  appTitleText: {
+    fontSize: 20,
+    color: "#B3B3B3",
+    fontWeight: "500",
+    alignSelf: "flex-start",
+    marginBottom: 8,
+  },
   container: {
     backgroundColor: "#F5F5F5",
     flex: 1,

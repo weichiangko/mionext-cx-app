@@ -4,6 +4,8 @@ import { StyleSheet, Text, TouchableOpacity } from "react-native";
 const getTextType = (textStyle) => {
   if (textStyle === "secondary") {
     return styles.secondaryText;
+  } else if (textStyle === "error") {
+    return styles.errorText;
   } else {
     return styles.primaryText;
   }
@@ -12,8 +14,10 @@ const getTextType = (textStyle) => {
 const getButtonType = (fillStyle) => {
   if (fillStyle === "secondary") {
     return styles.secondary;
-  } else if (fillStyle === "disabled") {
-    return styles.disabled;
+  } else if (fillStyle === "error") {
+    return styles.error;
+  } else {
+    return styles.primary;
   }
 };
 
@@ -65,6 +69,14 @@ const styles = StyleSheet.create({
   secondaryText: {
     color: "#3a3a3a",
     fontWeight: "500",
+  },
+  error: {
+    backgroundColor: "#FFD1D1",
+    borderWidth: 1,
+    borderColor: "#FF8585",
+  },
+  errorText: {
+    color: "red",
   },
   disabled: {
     backgroundColor: "#DFDFDF",

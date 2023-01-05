@@ -41,8 +41,8 @@ const DeleteAccount = () => {
         <Seperator />
         <View>
           <Button
-            fillStyle="secondary"
-            textStyle={{ color: "red" }}
+            fillStyle="error"
+            textStyle="error"
             label={"Delete Account"}
             onPress={() => showDeleteAccountAlert()}
           />
