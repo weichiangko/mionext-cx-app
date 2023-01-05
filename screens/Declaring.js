@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import OneSignal from "react-native-onesignal";
 import { StyleSheet, Text, View } from "react-native";
 import Button from "../components/Button";
@@ -14,6 +14,8 @@ const onPressDeclaring = () => {
 };
 
 const Declaring = () => {
+  const [isFirstClickDisabled, setIsFirstClickDisabled] = useState(false);
+
   return (
     <View style={styles.card}>
       <View style={styles.row}>
@@ -22,7 +24,14 @@ const Declaring = () => {
         </Text>
       </View>
       <Seperator />
-      <Button label={"首次使用"} onPress={() => onPressDeclaring()} />
+      <Button
+        label={"首次使用"}
+        onPress={() => {
+          onPressDeclaring();
+          setIsFirstClickDisabled(true);
+        }}
+        disabled={isFirstClickDisabled}
+      />
     </View>
   );
 };

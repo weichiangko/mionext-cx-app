@@ -34,6 +34,7 @@ const App = () => {
   const [refreshing, setRefreshing] = useState(false);
 
   const onRefresh = useCallback(() => {
+    console.log("Refreshing...");
     setRefreshing(true);
     wait(2000).then(() => setRefreshing(false));
   }, []);
