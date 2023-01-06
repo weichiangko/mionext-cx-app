@@ -3,11 +3,13 @@ import OneSignal from "react-native-onesignal";
 import { StyleSheet, Text, View, Alert } from "react-native";
 import Button from "../components/Button";
 
-const DeleteAccount = () => {
+const DeleteAccount = ({ onButtonPress }) => {
   const onPressDeleteAccount = () => {
     console.log("onPress Delete Account");
     OneSignal.sendTag("user_account", "deleted");
     OneSignal.addTrigger("user_account", "deleted");
+
+    onButtonPress();
   };
 
   const showDeleteAccountAlert = () =>

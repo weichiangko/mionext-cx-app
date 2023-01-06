@@ -46,19 +46,9 @@ const AskByDays = ({ onChangeAppDay }) => {
           <Button
             fillStyle="secondary"
             textStyle="secondary"
-            label={"90"}
+            label={"7 天"}
             onPress={() => {
-              onPressDaysButton(90);
-            }}
-          />
-        </View>
-        <View style={{ flex: 1, marginRight: 16 }}>
-          <Button
-            fillStyle="secondary"
-            textStyle="secondary"
-            label={"180"}
-            onPress={() => {
-              onPressDaysButton(180);
+              onPressDaysButton(7);
             }}
           />
         </View>
@@ -66,9 +56,31 @@ const AskByDays = ({ onChangeAppDay }) => {
           <Button
             fillStyle="secondary"
             textStyle="secondary"
-            label={"330"}
+            label={"14 天"}
             onPress={() => {
-              onPressDaysButton(330);
+              onPressDaysButton(14);
+            }}
+          />
+        </View>
+      </View>
+      <View style={[styles.row, { marginTop: 16 }]}>
+        <View style={{ flex: 1, marginRight: 16 }}>
+          <Button
+            fillStyle="secondary"
+            textStyle="secondary"
+            label={"90 天"}
+            onPress={() => {
+              onPressDaysButton(90);
+            }}
+          />
+        </View>
+        <View style={{ flex: 1 }}>
+          <Button
+            fillStyle="secondary"
+            textStyle="secondary"
+            label={"180 天"}
+            onPress={() => {
+              onPressDaysButton(180);
             }}
           />
         </View>

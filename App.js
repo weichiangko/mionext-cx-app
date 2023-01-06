@@ -19,7 +19,6 @@ import Declaring from "./screens/Declaring";
 const App = () => {
   OneSignal.setAppId(Constants.manifest.extra.oneSignalAppId);
   OneSignal.setNotificationOpenedHandler((openedEvent) => {
-    console.log("Notification is Opened!", openedEvent);
     const { notification } = openedEvent;
     OneSignal.sendTag(notification.templateName, "open");
     console.log(notification.templateName);
@@ -39,8 +38,20 @@ const App = () => {
     wait(1200).then(() => {
       setRefreshing(false);
       setRemoved(removed.map((item) => false));
+      setAppDayValue(0);
+      OneSignal.deleteTags([
+        "appStatus",
+        "declaring",
+        "user_email",
+        "submit_survey",
+        "engage_day",
+        "user_account",
+        "deleteAccount_survey",
+        "[MioNext] 90 Days",
+        "[MioNext] 180 Days",
+        "[MioNext] 330 Days",
+      ]);
     });
-    console.log(removed);
   }, []);
 
   const onButtonPress = (index) => {
@@ -62,7 +73,7 @@ const App = () => {
           }
         >
           <StatusBar />
-          <View style={{ marginVertical: 32 }}>
+          <View style={{ marginTop: 32, marginBottom: 16 }}>
             <Text style={[styles.appTitleText, { fontWeight: "700" }]}>
               OneSignal & SurveyCake Test App
             </Text>
@@ -74,7 +85,7 @@ const App = () => {
             style={[
               styles.row,
               {
-                marginBottom: 16,
+                paddingVertical: 16,
                 alignItems: "center",
                 justifyContent: "center",
               },
@@ -95,7 +106,9 @@ const App = () => {
           )}
           <AskByDays onChangeAppDay={handleAppDayValue} />
           <AskByFunctions />
-          <DeleteAccount />
+          {!removed[2] && (
+            <DeleteAccount onButtonPress={() => onButtonPress(2)} />
+          )}
           <Spacing />
         </ScrollView>
       </SafeAreaView>
@@ -127,9 +140,7 @@ const styles = StyleSheet.create({
   },
   content: {
     color: "#1f1f1f",
-    fontSize: 16,
-    alignSelf: "stretch",
-    marginBottom: 16,
+    fontSize: 18,
   },
   spacing: {
     marginVertical: 24,
