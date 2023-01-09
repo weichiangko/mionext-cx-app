@@ -49,7 +49,9 @@ const EmailSubmit = ({ onRefresh, onButtonPress }) => {
 
   return (
     <View style={styles.card}>
-      <Text style={[styles.titleContent, { marginVertical: -8 }]}>
+      <Text
+        style={[styles.titleContent, { marginVertical: -8, color: "#F05A1E" }]}
+      >
         基本資料測試
       </Text>
       <Seperator />

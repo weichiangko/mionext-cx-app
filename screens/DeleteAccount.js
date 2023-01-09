@@ -36,7 +36,12 @@ const DeleteAccount = ({ onButtonPress }) => {
     <>
       <View style={styles.card}>
         <View>
-          <Text style={[styles.titleContent, { marginVertical: -8 }]}>
+          <Text
+            style={[
+              styles.titleContent,
+              { marginVertical: -8, color: "#F05A1E" },
+            ]}
+          >
             Delete Account 測試
           </Text>
         </View>

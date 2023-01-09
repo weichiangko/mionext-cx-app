@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     fontWeight: "500",
   },
   error: {
-    backgroundColor: "#FFD1D1",
+    backgroundColor: "#FFE2E2",
     borderWidth: 1,
     borderColor: "#FF8585",
   },

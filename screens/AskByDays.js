@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import OneSignal from "react-native-onesignal";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import Button from "../components/Button";
 
 const AskByDays = ({ onChangeAppDay }) => {
@@ -19,62 +19,46 @@ const AskByDays = ({ onChangeAppDay }) => {
     <View style={styles.card}>
       <View style={styles.row}>
         <View style={{ flex: 1 }}>
-          <Text style={[styles.titleContent, { marginVertical: -8 }]}>
-            Ask by Days 測試
-          </Text>
-        </View>
-        <View>
-          <TouchableOpacity
-            onPress={() => {
-              onPressDaysButton(0);
-            }}
+          <Text
+            style={[
+              styles.titleContent,
+              { marginVertical: -8, color: "#F05A1E" },
+            ]}
           >
-            <Text
-              style={[
-                styles.titleContent,
-                { marginVertical: -8, color: "#F05A1E" },
-              ]}
-            >
-              Reset
-            </Text>
-          </TouchableOpacity>
+            Ask by Days 推播測試
+          </Text>
         </View>
       </View>
       <Seperator addStyles={{ marginHorizontal: -24 }} />
-      <View style={styles.row}>
-        <View style={{ flex: 1, marginRight: 16 }}>
-          <Button
-            fillStyle="secondary"
-            textStyle="secondary"
-            label={"7 天"}
-            onPress={() => {
-              onPressDaysButton(7);
-            }}
-          />
-        </View>
-        <View style={{ flex: 1 }}>
-          <Button
-            fillStyle="secondary"
-            textStyle="secondary"
-            label={"14 天"}
-            onPress={() => {
-              onPressDaysButton(14);
-            }}
-          />
+      <View style={{ flex: 1 }}>
+        <Text style={[styles.titleContent, { paddingBottom: 16 }]}>
+          1. 選擇 APP 使用天數:
+        </Text>
+        <View style={styles.row}>
+          <View style={{ flex: 1, marginRight: 16 }}>
+            <Button
+              fillStyle="secondary"
+              textStyle="secondary"
+              label={"0 天"}
+              onPress={() => {
+                onPressDaysButton(0);
+              }}
+            />
+          </View>
+          <View style={{ flex: 1 }}>
+            <Button
+              fillStyle="secondary"
+              textStyle="secondary"
+              label={"90 天"}
+              onPress={() => {
+                onPressDaysButton(90);
+              }}
+            />
+          </View>
         </View>
       </View>
-      <View style={[styles.row, { marginTop: 16 }]}>
+      <View style={[styles.row, { marginVertical: 16 }]}>
         <View style={{ flex: 1, marginRight: 16 }}>
-          <Button
-            fillStyle="secondary"
-            textStyle="secondary"
-            label={"90 天"}
-            onPress={() => {
-              onPressDaysButton(90);
-            }}
-          />
-        </View>
-        <View style={{ flex: 1 }}>
           <Button
             fillStyle="secondary"
             textStyle="secondary"
@@ -84,7 +68,20 @@ const AskByDays = ({ onChangeAppDay }) => {
             }}
           />
         </View>
+        <View style={{ flex: 1 }}>
+          <Button
+            fillStyle="secondary"
+            textStyle="secondary"
+            label={"330 天"}
+            onPress={() => {
+              onPressDaysButton(330);
+            }}
+          />
+        </View>
       </View>
+      <Text style={[styles.titleContent, { paddingTop: 16 }]}>
+        2. 推播通知約等待 5 ~ 30 分鐘不等
+      </Text>
     </View>
   );
 };

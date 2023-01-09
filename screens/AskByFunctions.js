@@ -4,6 +4,13 @@ import { View, Text, Modal, StyleSheet, SafeAreaView } from "react-native";
 import Button from "../components/Button";
 
 const AskByFunctions = () => {
+  const onPressDaysButton = (value) => {
+    console.log(`engage_day, ${value}`);
+    OneSignal.sendTag("engage_day", JSON.stringify(value));
+    OneSignal.addTrigger("engage_day", value);
+    onChangeAppDay(value);
+  };
+
   const onPressCloseButton = () => {
     console.log("function, liveViewInit");
     // OneSignal.sendTag("function", "liveViewInit");
@@ -18,17 +25,64 @@ const AskByFunctions = () => {
   return (
     <View style={styles.card}>
       <View>
-        <Text style={[styles.titleContent, { marginVertical: -8 }]}>
+        <Text
+          style={[
+            styles.titleContent,
+            { marginVertical: -8, color: "#F05A1E" },
+          ]}
+        >
           Ask by functions 測試
         </Text>
       </View>
       <Seperator />
-      <Button
-        fillStyle="secondary"
-        textStyle="secondary"
-        label={"功能測試"}
-        onPress={() => setModalVisible(true)}
-      />
+      <View>
+        <Text style={[styles.titleContent, { paddingBottom: 16 }]}>
+          1. 選擇 APP 使用天數:
+        </Text>
+      </View>
+      <View style={styles.row}>
+        <View style={{ flex: 1, marginRight: 16 }}>
+          <Button
+            fillStyle="secondary"
+            textStyle="secondary"
+            label={"0 天"}
+            onPress={() => {
+              onPressDaysButton(0);
+            }}
+          />
+        </View>
+        <View style={{ flex: 1, marginRight: 16 }}>
+          <Button
+            fillStyle="secondary"
+            textStyle="secondary"
+            label={"7 天"}
+            onPress={() => {
+              onPressDaysButton(7);
+            }}
+          />
+        </View>
+        <View style={{ flex: 1 }}>
+          <Button
+            fillStyle="secondary"
+            textStyle="secondary"
+            label={"14 天"}
+            onPress={() => {
+              onPressDaysButton(14);
+            }}
+          />
+        </View>
+      </View>
+      <View style={{ flex: 1, marginTop: 16 }}>
+        <Text style={[styles.titleContent, { paddingVertical: 16 }]}>
+          2. 按下功能測試:
+        </Text>
+        <Button
+          fillStyle="secondary"
+          textStyle="secondary"
+          label={"功能測試"}
+          onPress={() => setModalVisible(true)}
+        />
+      </View>
       <Modal
         animationType="slide"
         presentationStyle="pageSheet"
@@ -84,6 +138,9 @@ const styles = StyleSheet.create({
   titleContent: {
     color: "#666666",
     fontSize: 16,
+  },
+  row: {
+    flexDirection: "row",
   },
   separator: {
     marginVertical: 24,

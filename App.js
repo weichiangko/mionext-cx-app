@@ -66,52 +66,75 @@ const App = () => {
 
   return (
     <View style={styles.container}>
-      <SafeAreaView>
-        <ScrollView
-          refreshControl={
-            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-          }
+      <View
+        style={{
+          position: "absolute",
+          left: 0,
+          right: 0,
+          top: 0,
+          height: 136,
+          backgroundColor: "#F5F5F5",
+          zIndex: 100,
+          elevation: 100,
+          paddingTop: 16,
+          flex: 1,
+        }}
+      >
+        <View
+          style={{
+            marginTop: 40,
+            alignItems: "center",
+          }}
         >
-          <StatusBar />
-          <View style={{ marginTop: 32, marginBottom: 16 }}>
-            <Text style={[styles.appTitleText, { fontWeight: "700" }]}>
-              OneSignal & SurveyCake Test App
-            </Text>
-            <Text style={[styles.appTitleText, { fontSize: 18 }]}>
-              Version: v0.2.4 {/* Update the version here */}
-            </Text>
-          </View>
-          <View
-            style={[
-              styles.row,
-              {
-                paddingVertical: 16,
-                alignItems: "center",
-                justifyContent: "center",
-              },
-            ]}
-          >
-            <Text style={styles.content}>MioNext 已使用 </Text>
-            <Text style={[styles.content, { color: "#F05A1E" }]}>
-              {appDayValue}
-            </Text>
-            <Text style={styles.content}> 天了！</Text>
-          </View>
-          {!removed[0] && <Declaring onButtonPress={() => onButtonPress(0)} />}
-          {!removed[1] && (
-            <EmailSubmit
-              onRefresh={refreshing}
-              onButtonPress={() => onButtonPress(1)}
-            />
-          )}
-          <AskByDays onChangeAppDay={handleAppDayValue} />
-          <AskByFunctions />
-          {!removed[2] && (
-            <DeleteAccount onButtonPress={() => onButtonPress(2)} />
-          )}
-          <Spacing />
-        </ScrollView>
-      </SafeAreaView>
+          <Text style={[styles.appTitleText, { fontWeight: "700" }]}>
+            OneSignal & SurveyCake Test App
+          </Text>
+        </View>
+        <View
+          style={[
+            styles.row,
+            {
+              paddingVertical: 12,
+              alignItems: "center",
+              justifyContent: "center",
+            },
+          ]}
+        >
+          <Text style={styles.content}>MioNext 已使用 </Text>
+          <Text style={[styles.content, { color: "#F05A1E" }]}>
+            {appDayValue}
+          </Text>
+          <Text style={styles.content}> 天了！</Text>
+        </View>
+      </View>
+      <ScrollView
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
+      >
+        <StatusBar />
+        {!removed[0] && <Declaring onButtonPress={() => onButtonPress(0)} />}
+        {!removed[1] && (
+          <EmailSubmit
+            onRefresh={refreshing}
+            onButtonPress={() => onButtonPress(1)}
+          />
+        )}
+        <AskByDays onChangeAppDay={handleAppDayValue} />
+        <AskByFunctions />
+        {!removed[2] && (
+          <DeleteAccount onButtonPress={() => onButtonPress(2)} />
+        )}
+        <Text
+          style={[
+            styles.appTitleText,
+            { fontSize: 18, alignSelf: "center", marginVertical: 16 },
+          ]}
+        >
+          Version: v0.2.4 {/* Update the version here */}
+        </Text>
+        <Spacing />
+      </ScrollView>
     </View>
   );
 };
@@ -119,8 +142,8 @@ const App = () => {
 const styles = StyleSheet.create({
   appTitleText: {
     fontSize: 20,
+    lineHeight: 24,
     color: "#B3B3B3",
-    alignSelf: "flex-start",
     marginBottom: 8,
   },
   container: {
@@ -128,7 +151,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-start",
     paddingHorizontal: 16,
-    paddingTop: 40,
+    paddingTop: 152,
   },
   row: {
     flexDirection: "row",
@@ -141,6 +164,7 @@ const styles = StyleSheet.create({
   content: {
     color: "#1f1f1f",
     fontSize: 18,
+    lineHeight: 24,
   },
   spacing: {
     marginVertical: 24,

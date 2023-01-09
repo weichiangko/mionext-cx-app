@@ -17,7 +17,12 @@ const Declaring = ({ onButtonPress }) => {
   return (
     <View style={styles.card}>
       <View style={styles.row}>
-        <Text style={[styles.titleContent, { marginVertical: -8 }]}>
+        <Text
+          style={[
+            styles.titleContent,
+            { marginVertical: -8, color: "#F05A1E" },
+          ]}
+        >
           宣告測試
         </Text>
       </View>
