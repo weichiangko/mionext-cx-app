@@ -4,10 +4,26 @@ import { StyleSheet, Text, View, Alert } from "react-native";
 import Button from "../components/Button";
 
 const DeleteAccount = ({ onButtonPress }) => {
+  const getDeclaringValue = () => {
+    return new Promise((resolve) => {
+      OneSignal.getTags((receivedTags) => {
+        const tags = receivedTags;
+        resolve(tags);
+      });
+    });
+  };
+
   const onPressDeleteAccount = () => {
-    console.log("onPress Delete Account");
+    getDeclaringValue().then((tags) => {
+      OneSignal.addTriggers({
+        user_account: "deleted",
+        declaring: tags.declaring,
+      });
+
+      console.log("user_account", tags.user_account);
+      console.log("declaring", tags.declaring);
+    });
     OneSignal.sendTag("user_account", "deleted");
-    OneSignal.addTrigger("user_account", "deleted");
 
     onButtonPress();
   };

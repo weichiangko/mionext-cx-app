@@ -5,9 +5,8 @@ import Button from "../components/Button";
 
 const Declaring = ({ onButtonPress }) => {
   const onPressDeclaring = () => {
-    console.log("appStatus, init");
-    OneSignal.sendTag("appStatus", "init");
     OneSignal.addTrigger("appStatus", "init");
+    console.log("declaring, click");
   };
 
   const Seperator = ({ addStyles }) => (

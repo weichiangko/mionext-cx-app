@@ -4,7 +4,6 @@ import {
   RefreshControl,
   StyleSheet,
   View,
-  SafeAreaView,
   ScrollView,
   Text,
 } from "react-native";
@@ -32,6 +31,11 @@ const App = () => {
     return new Promise((resolve) => setTimeout(resolve, timeout));
   };
 
+  const getAllTags = () =>
+    OneSignal.getTags((receivedTags) => {
+      console.log(receivedTags);
+    });
+
   const onRefresh = useCallback(() => {
     console.log("Refreshing...");
     setRefreshing(true);
@@ -39,19 +43,21 @@ const App = () => {
       setRefreshing(false);
       setRemoved(removed.map((item) => false));
       setAppDayValue(0);
-      OneSignal.deleteTags([
-        "appStatus",
-        "declaring",
-        "user_email",
-        "submit_survey",
-        "engage_day",
-        "user_account",
-        "deleteAccount_survey",
-        "[MioNext] 90 Days",
-        "[MioNext] 180 Days",
-        "[MioNext] 330 Days",
-      ]);
     });
+    OneSignal.deleteTags([
+      "appStatus",
+      "declaring",
+      "user_email",
+      "submit_survey",
+      "engage_day",
+      "user_account",
+      "deleteAccount_survey",
+      "liveView",
+      "liveView_survey",
+      "[MioNext] 90 Days",
+      "[MioNext] 180 Days",
+      "[MioNext] 330 Days",
+    ]);
   }, []);
 
   const onButtonPress = (index) => {
@@ -65,7 +71,7 @@ const App = () => {
   const Spacing = () => <View style={styles.spacing} />;
 
   return (
-    <View style={styles.container}>
+    <View>
       <View
         style={{
           position: "absolute",
@@ -75,7 +81,7 @@ const App = () => {
           height: 136,
           backgroundColor: "#F5F5F5",
           zIndex: 100,
-          elevation: 100,
+          elevation: 10,
           paddingTop: 16,
           flex: 1,
         }}
@@ -86,7 +92,12 @@ const App = () => {
             alignItems: "center",
           }}
         >
-          <Text style={[styles.appTitleText, { fontWeight: "700" }]}>
+          <Text
+            onPress={() => {
+              getAllTags();
+            }}
+            style={[styles.appTitleText, { fontWeight: "700" }]}
+          >
             OneSignal & SurveyCake Test App
           </Text>
         </View>
@@ -108,6 +119,7 @@ const App = () => {
         </View>
       </View>
       <ScrollView
+        style={{ padding: 16, marginTop: 136, backgroundColor: "#F5F5F5" }}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
@@ -121,7 +133,7 @@ const App = () => {
           />
         )}
         <AskByDays onChangeAppDay={handleAppDayValue} />
-        <AskByFunctions />
+        <AskByFunctions onChangeAppDay={handleAppDayValue} />
         {!removed[2] && (
           <DeleteAccount onButtonPress={() => onButtonPress(2)} />
         )}
@@ -149,7 +161,6 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "#F5F5F5",
     flex: 1,
-    justifyContent: "flex-start",
     paddingHorizontal: 16,
     paddingTop: 152,
   },

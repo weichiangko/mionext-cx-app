@@ -22,8 +22,8 @@ const EmailSubmit = ({ onRefresh, onButtonPress }) => {
         user_email: data.email,
         declaring: declaringValue,
       });
-      console.log(data.email);
-      console.log(declaringValue);
+      console.log("user_email", data.email);
+      console.log("declaring", declaringValue);
     });
     OneSignal.sendTags({
       user_email: data.email,

@@ -3,18 +3,34 @@ import OneSignal from "react-native-onesignal";
 import { View, Text, Modal, StyleSheet, SafeAreaView } from "react-native";
 import Button from "../components/Button";
 
-const AskByFunctions = () => {
-  const onPressDaysButton = (value) => {
-    console.log(`engage_day, ${value}`);
-    OneSignal.sendTag("engage_day", JSON.stringify(value));
-    OneSignal.addTrigger("engage_day", value);
-    onChangeAppDay(value);
+const AskByFunctions = ({ onChangeAppDay }) => {
+  const getDeclaringValue = () => {
+    return new Promise((resolve) => {
+      OneSignal.getTags((receivedTags) => {
+        const tags = receivedTags;
+        resolve(tags);
+      });
+    });
   };
 
   const onPressCloseButton = () => {
-    console.log("function, liveViewInit");
-    // OneSignal.sendTag("function", "liveViewInit");
-    // OneSignal.addTrigger("function", "liveViewInit");
+    getDeclaringValue().then((tags) => {
+      OneSignal.addTriggers({
+        liveView: "init",
+        declaring: tags.declaring,
+        engage_day: tags.engage_day,
+      });
+      console.log("liveView", tags.liveView);
+      console.log("declaring", tags.declaring);
+      console.log("engage_day", tags.engage_day);
+    });
+    OneSignal.sendTag("liveView", "init");
+  };
+
+  const onPressDaysButton = (value) => {
+    console.log(`engage_day, ${value}`);
+    OneSignal.sendTag("engage_day", JSON.stringify(value));
+    onChangeAppDay(value);
   };
 
   const [modalVisible, setModalVisible] = useState(false);
