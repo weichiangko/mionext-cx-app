@@ -22,6 +22,7 @@ const App = () => {
     OneSignal.sendTag(notification.templateName, "open");
     console.log(notification.templateName);
   });
+  OneSignal.setLogLevel(6, 0);
 
   const [refreshing, setRefreshing] = useState(false);
   const [removed, setRemoved] = useState([false, false, false, false]);
