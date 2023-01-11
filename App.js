@@ -22,7 +22,6 @@ const App = () => {
     OneSignal.sendTag(notification.templateName, "open");
     console.log(notification.templateName);
   });
-  OneSignal.setLogLevel(6, 0);
 
   const [refreshing, setRefreshing] = useState(false);
   const [removed, setRemoved] = useState([false, false, false, false]);
@@ -38,7 +37,7 @@ const App = () => {
     });
 
   const onRefresh = useCallback(() => {
-    console.log("Refreshing...");
+    console.log("Refreshing and delete all tags...");
     setRefreshing(true);
     wait(1200).then(() => {
       setRefreshing(false);
@@ -133,8 +132,8 @@ const App = () => {
             onButtonPress={() => onButtonPress(1)}
           />
         )}
-        <AskByDays onChangeAppDay={handleAppDayValue} />
         <AskByFunctions onChangeAppDay={handleAppDayValue} />
+        <AskByDays onChangeAppDay={handleAppDayValue} />
         {!removed[2] && (
           <DeleteAccount onButtonPress={() => onButtonPress(2)} />
         )}

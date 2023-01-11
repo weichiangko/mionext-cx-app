@@ -7,7 +7,6 @@ const AskByDays = ({ onChangeAppDay }) => {
   const onPressDaysButton = (value) => {
     console.log(`engage_day, ${value}`);
     OneSignal.sendTag("engage_day", JSON.stringify(value));
-    OneSignal.addTrigger("engage_day", value);
     onChangeAppDay(value);
   };
 
