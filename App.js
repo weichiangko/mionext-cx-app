@@ -16,6 +16,7 @@ import DeleteAccount from "./screens/DeleteAccount";
 import Declaring from "./screens/Declaring";
 
 const App = () => {
+  OneSignal.setLogLevel(6, 0);
   OneSignal.setAppId(Constants.manifest.extra.oneSignalAppId);
   OneSignal.setNotificationOpenedHandler((openedEvent) => {
     const { notification } = openedEvent;
