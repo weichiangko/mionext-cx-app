@@ -1,5 +1,4 @@
 import React, { useState, useCallback } from "react";
-import analytics from "@react-native-firebase/analytics";
 import OneSignal from "react-native-onesignal";
 import {
   RefreshControl,
