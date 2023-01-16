@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from "react";
+import analytics from "@react-native-firebase/analytics";
 import OneSignal from "react-native-onesignal";
 import {
   RefreshControl,
@@ -16,7 +17,7 @@ import DeleteAccount from "./screens/DeleteAccount";
 import Declaring from "./screens/Declaring";
 
 const App = () => {
-  OneSignal.setLogLevel(6, 0);
+  // OneSignal.setLogLevel(6, 0);
   OneSignal.setAppId(Constants.manifest.extra.oneSignalAppId);
   OneSignal.setNotificationOpenedHandler((openedEvent) => {
     const { notification } = openedEvent;
