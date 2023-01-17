@@ -143,7 +143,7 @@ const App = () => {
             { fontSize: 18, alignSelf: "center", marginVertical: 16 },
           ]}
         >
-          Version: v0.2.4 {/* Update the version here */}
+          Version: v0.1.0 {/* Update the version here */}
         </Text>
         <Spacing />
       </ScrollView>
