@@ -8,9 +8,9 @@
     <true/>
     <key>EXUpdatesLaunchWaitMs</key>
     <integer>0</integer>
-    <key>EXUpdatesSDKVersion</key>
-    <string>46.0.0</string>
     <key>EXUpdatesURL</key>
-    <string>https://exp.host/@ben.ko/mionext-cx-app</string>
+    <string>https://u.expo.dev/705466b0-6af2-4ffa-b245-124089806b78</string>
+    <key>EXUpdatesRuntimeVersion</key>
+    <string>1.0.0</string>
   </dict>
 </plist>

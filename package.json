@@ -20,7 +20,8 @@
     "react-hook-form": "^7.39.1",
     "react-native": "0.69.6",
     "react-native-onesignal": "^4.5.0",
-    "react-native-web": "~0.18.7"
+    "react-native-web": "~0.18.7",
+    "expo-updates": "~0.14.7"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
