@@ -8,7 +8,6 @@ import {
   Text,
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import Constants from "expo-constants";
 import EmailSubmit from "./screens/EmailSubmit";
 import AskByDays from "./screens/AskByDays";
 import AskByFunctions from "./screens/AskByFunctions";
@@ -17,7 +16,7 @@ import Declaring from "./screens/Declaring";
 
 const App = () => {
   // OneSignal.setLogLevel(6, 0);
-  OneSignal.setAppId(Constants.manifest.extra.oneSignalAppId);
+  OneSignal.setAppId("d6ad6cdf-1761-4546-8248-2fdd41e696df");
   OneSignal.setNotificationOpenedHandler((openedEvent) => {
     const { notification } = openedEvent;
     OneSignal.sendTag(notification.templateName, "open");

@@ -15,9 +15,7 @@
       "fallbackToCacheTimeout": 0,
       "url": "https://u.expo.dev/705466b0-6af2-4ffa-b245-124089806b78"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.mitac.miSentryCXTest"
@@ -59,8 +57,7 @@
       [
         "onesignal-expo-plugin",
         {
-          "mode": "development",
-          "iPhoneDeploymentTarget": "13.0"
+          "mode": "development"
         }
       ]
     ],
