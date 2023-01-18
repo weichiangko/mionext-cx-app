@@ -76,3 +76,5 @@ const App = () => {
 [設定方式說明](https://documentation.onesignal.com/docs/generate-an-ios-push-certificate)
 
 **5. 設定 Android Firebase Credentials**
+
+[設定方式說明](https://documentation.onesignal.com/docs/generate-a-google-server-api-key)
