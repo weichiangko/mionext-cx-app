@@ -18,4 +18,26 @@ OneSignal & SurveyCake Test App 是一個用來示範如何整合 OneSignal (推
 **環境建置**
 
 1. 安裝 [Node.js](https://nodejs.org/en/) (已安裝可略過)
-2. `npm install`
+2. 安裝所有 node modules
+
+```
+npm install
+```
+
+3. 設定好 OneSignal App ID (取得 App ID 方式可參考[官方說明](https://documentation.onesignal.com/docs/accounts-and-keys))
+
+```JavaScript
+// App.js
+
+const App = () => {
+  OneSignal.setAppId("YOUR_APP_ID");
+
+  ...
+
+  return (
+  
+    ...
+    
+  );
+};
+```
