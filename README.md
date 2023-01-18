@@ -2,7 +2,7 @@
 
 ## 簡介
 
-OneSignal & SurveyCake Test App 是一個用來示範如何整合 OneSignal (推播服務) 與 SurveyCake (線上問卷) 這兩套主流的 SaaS 服務的測試 App
+OneSignal & SurveyCake Test App 是一個用來示範如何整合 OneSignal (推播服務) 與 SurveyCake (線上問卷) 這兩套主流的 SaaS 服務的測試 App。
 
 ## 編譯環境
 
@@ -21,11 +21,15 @@ OneSignal & SurveyCake Test App 是一個用來示範如何整合 OneSignal (推
 
 已安裝可略過
 
-**2. 安裝所有 node modules**
+**2. 安裝 node modules 與 OneSignal SDK**
+
+2.1 安裝所有 node modules
 
 ```
 npm install
 ```
+
+2.2 安裝 OneSignal SDK
 
 **3. 設定好 OneSignal App ID**
 
