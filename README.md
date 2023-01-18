@@ -29,8 +29,8 @@ npm install
 
 **3. 設定好 OneSignal App ID**
 
-Step 1. 取得 App ID 方式可參考[官方說明](https://documentation.onesignal.com/docs/accounts-and-keys))
-Step 2. 將 App ID 加入專案中
+3.1 取得 App ID 方式可參考[官方說明](https://documentation.onesignal.com/docs/accounts-and-keys)
+3.2 將 App ID 加入專案中
 
 ```JavaScript
 // App.js
@@ -49,3 +49,30 @@ const App = () => {
 ```
 
 **4. 設定 iOS Push Certificate**
+
+4.1 須先設定 `bundleIdentifier`
+
+```JavaScript
+// app.json
+
+{
+    "expo": {
+
+        ...
+
+        "ios": {
+            "bundleIdentifier": "SETUP-BUNDLE-ID"
+        }
+
+        ...
+
+    }
+}
+
+```
+
+4.2 產生 Certificate 並上傳至 OneSignal
+
+[設定方式說明](https://documentation.onesignal.com/docs/generate-an-ios-push-certificate)
+
+**5. 設定 Android Firebase Credentials**
