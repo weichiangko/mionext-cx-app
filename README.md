@@ -31,6 +31,10 @@ npm install
 
 2.2 安裝 OneSignal SDK
 
+- 使用 Expo 建立專案(本專案採用此方式) -> [設定說明](https://documentation.onesignal.com/docs/react-native-expo-sdk-setup)
+- 使用 iOS Native 建立專案 -> [設定說明](https://documentation.onesignal.com/docs/ios-sdk-setup)
+- 使用 Android Native 建立專案 -> [設定說明](https://documentation.onesignal.com/docs/android-sdk-setup)
+
 **3. 設定好 OneSignal App ID**
 
 3.1 取得 App ID 方式可參考[官方說明](https://documentation.onesignal.com/docs/accounts-and-keys)
