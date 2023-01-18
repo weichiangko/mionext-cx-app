@@ -38,6 +38,7 @@ npm install
 **3. 設定好 OneSignal App ID**
 
 3.1 取得 App ID 方式可參考[官方說明](https://documentation.onesignal.com/docs/accounts-and-keys)
+
 3.2 將 App ID 加入專案中
 
 ```JavaScript
