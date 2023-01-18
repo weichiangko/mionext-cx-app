@@ -17,14 +17,20 @@ OneSignal & SurveyCake Test App 是一個用來示範如何整合 OneSignal (推
 
 ### 環境建置
 
-1. 安裝 [Node.js](https://nodejs.org/en/) (已安裝可略過)
-2. 安裝所有 node modules
+**1. 安裝 [Node.js](https://nodejs.org/en/)**
+
+已安裝可略過
+
+**2. 安裝所有 node modules**
 
 ```
 npm install
 ```
 
-3. 設定好 OneSignal App ID (取得 App ID 方式可參考[官方說明](https://documentation.onesignal.com/docs/accounts-and-keys))
+**3. 設定好 OneSignal App ID**
+
+Step 1. 取得 App ID 方式可參考[官方說明](https://documentation.onesignal.com/docs/accounts-and-keys))
+Step 2. 將 App ID 加入專案中
 
 ```JavaScript
 // App.js
@@ -41,3 +47,5 @@ const App = () => {
   );
 };
 ```
+
+**4. 設定 iOS Push Certificate**
