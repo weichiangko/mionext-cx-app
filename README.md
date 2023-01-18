@@ -11,11 +11,11 @@ OneSignal & SurveyCake Test App 是一個用來示範如何整合 OneSignal (推
 
 ## 安裝方式
 
-**下載專案**
+### 下載專案
 
 [Release](https://github.com/weichiangko/mionext-cx-app/releases)
 
-**環境建置**
+### 環境建置
 
 1. 安裝 [Node.js](https://nodejs.org/en/) (已安裝可略過)
 2. 安裝所有 node modules
@@ -30,14 +30,14 @@ npm install
 // App.js
 
 const App = () => {
-  OneSignal.setAppId("YOUR_APP_ID");
+  OneSignal.setAppId("YOUR-ONESIGNAL-APP-ID");
 
   ...
 
   return (
-  
+
     ...
-    
+
   );
 };
 ```
