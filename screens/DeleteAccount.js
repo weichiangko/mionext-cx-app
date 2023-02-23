@@ -28,7 +28,7 @@ const DeleteAccount = ({ onButtonPress }) => {
     onButtonPress();
   };
 
-  const showDeleteAccountAlert = () =>
+  const showDeleteAccountAlert = () => {
     Alert.alert(
       "Delete Your Mio Account",
       `Your profile, photo, driving data and events will be permently deleted. This cannot be undone. If your device has active subscription, it won’t be cancelled by deleting your account.`,
@@ -43,10 +43,11 @@ const DeleteAccount = ({ onButtonPress }) => {
         },
       ]
     );
+  };
 
-  const Seperator = ({ addStyles }) => (
-    <View style={[styles.separator, addStyles]} />
-  );
+  const Seperator = ({ addStyles }) => {
+    <View style={[styles.separator, addStyles]} />;
+  };
 
   return (
     <>
