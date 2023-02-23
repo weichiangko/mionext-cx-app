@@ -6,6 +6,7 @@ import {
   View,
   ScrollView,
   Text,
+  Alert,
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import EmailSubmit from "./screens/EmailSubmit";
@@ -18,15 +19,34 @@ const App = () => {
   // Init OneSignal App
   OneSignal.setAppId("d6ad6cdf-1761-4546-8248-2fdd41e696df");
 
-  // Set Player ID as External User ID
-  const [userId, setUserId] = useState(null);
+  // Init Set External User ID & Get All Tags
+  const [userId, setUserId] = useState("");
+  const [tags, setTags] = useState({});
+
   useEffect(() => {
     OneSignal.getDeviceState().then((deviceState) => {
       const userId = deviceState.userId;
       setUserId(userId);
     });
+    OneSignal.getTags((receivedTags) => {
+      setTags(receivedTags);
+    });
   }, []);
+
   OneSignal.setExternalUserId(userId);
+
+  const showAllTagsAlert = () => {
+    console.log(tags);
+    const tagsArray = Object.entries(tags);
+    const tagsString = tagsArray
+      .map(([key, value]) => `${key}: ${value}`)
+      .join("\n");
+    Alert.alert("OneSignal Current Tags", tagsString, [
+      {
+        text: "Ok",
+      },
+    ]);
+  };
 
   // Get Notification Status
   OneSignal.setNotificationOpenedHandler((openedEvent) => {
@@ -42,11 +62,6 @@ const App = () => {
   const wait = (timeout) => {
     return new Promise((resolve) => setTimeout(resolve, timeout));
   };
-
-  const getAllTags = () =>
-    OneSignal.getTags((receivedTags) => {
-      console.log(receivedTags);
-    });
 
   const onRefresh = useCallback(() => {
     console.log("Refreshing and delete all tags...");
@@ -106,7 +121,7 @@ const App = () => {
         >
           <Text
             onPress={() => {
-              getAllTags();
+              showAllTagsAlert();
             }}
             style={[styles.appTitleText, { fontWeight: "700" }]}
           >
