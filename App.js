@@ -33,7 +33,7 @@ const App = () => {
     });
   }, []);
 
-  OneSignal.setExternalUserId(userId);
+  OneSignal.setExternalUserId("userId");
 
   const showAllTagsAlert = () => {
     console.log(tags);
