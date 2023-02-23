@@ -7,28 +7,10 @@ import Button from "../components/Button";
 const EmailSubmit = ({ onRefresh, onButtonPress }) => {
   const Seperator = () => <View style={styles.separator} />;
 
-  const getDeclaringValue = () => {
-    return new Promise((resolve) => {
-      OneSignal.getTags((receivedTags) => {
-        const declaringValue = receivedTags.declaring;
-        resolve(declaringValue);
-      });
-    });
-  };
-
   const onSubmitMail = (data) => {
-    getDeclaringValue().then((declaringValue) => {
-      OneSignal.addTriggers({
-        user_email: data.email,
-        declaring: declaringValue,
-      });
-      console.log("user_email", data.email);
-      console.log("declaring", declaringValue);
-    });
-    OneSignal.sendTags({
-      user_email: data.email,
-      user_account: "active",
-    });
+    OneSignal.sendTag("userEmail", data.email);
+    OneSignal.addTrigger("userEmail", JSON.stringify(data.email));
+    console.log(data.email);
 
     onButtonPress();
   };

@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import OneSignal from "react-native-onesignal";
 import {
   RefreshControl,
@@ -15,8 +15,20 @@ import DeleteAccount from "./screens/DeleteAccount";
 import Declaring from "./screens/Declaring";
 
 const App = () => {
-  // OneSignal.setLogLevel(6, 0);
+  // Init OneSignal App
   OneSignal.setAppId("d6ad6cdf-1761-4546-8248-2fdd41e696df");
+
+  // Set Player ID as External User ID
+  const [userId, setUserId] = useState(null);
+  useEffect(() => {
+    OneSignal.getDeviceState().then((deviceState) => {
+      const userId = deviceState.userId;
+      setUserId(userId);
+    });
+  }, []);
+  OneSignal.setExternalUserId(userId);
+
+  // Get Notification Status
   OneSignal.setNotificationOpenedHandler((openedEvent) => {
     const { notification } = openedEvent;
     OneSignal.sendTag(notification.templateName, "open");
@@ -47,8 +59,8 @@ const App = () => {
     OneSignal.deleteTags([
       "appStatus",
       "declaring",
-      "user_email",
-      "submit_survey",
+      "userEmail",
+      "submitSurvey",
       "engage_day",
       "user_account",
       "deleteAccount_survey",
