@@ -45,9 +45,9 @@ const DeleteAccount = ({ onButtonPress }) => {
     );
   };
 
-  const Seperator = ({ addStyles }) => {
-    <View style={[styles.separator, addStyles]} />;
-  };
+  const Seperator = ({ addStyles }) => (
+    <View style={[styles.separator, addStyles]} />
+  );
 
   return (
     <>
